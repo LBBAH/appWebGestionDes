@@ -27,3 +27,5 @@ jobs:
         run: |
           npm ci
           npm run build
+        with:
+          build_dir: dist/
