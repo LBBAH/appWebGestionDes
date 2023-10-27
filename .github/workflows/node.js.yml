@@ -22,22 +22,6 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+         run: ng build
 
-      - name: Copy Build Files
-        run: |
-          mkdir gh-pages
-          cp -r dist/* gh-pages/
-        working-directory: ${{ runner.workspace }}
-
-      - name: Commit and Push to gh-pages Branch
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git checkout -b gh-pages
-          git add .
-          git commit -m "Publish build artifacts"
-          git push origin gh-pages
-        working-directory: ${{ runner.workspace }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
