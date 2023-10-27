@@ -29,7 +29,10 @@ jobs:
           npm run build
 
       - name: Deploy 🚀
+        github_token: ${{ secrets.TOKEN }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: dist
+
+          
