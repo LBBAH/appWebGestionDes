@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && npm run sentry:sourcemaps && npm run sentry:sourcemaps",
+    "build": "ng build && npm run sentry:sourcemaps",
     "gh-build": "ng build --configuration production --base-href ./",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

@@ -37,10 +37,11 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .then(success => console.log(`Bootstrap success`))
   .catch(err => console.error(err));
-  
+
 enableProdMode();
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
 
 

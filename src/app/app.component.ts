@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageServiceService } from './service/local-storage-service.service';
+import * as Sentry from "@sentry/angular-ivy";
 
 @Component({
   selector: 'app-root',
@@ -20,31 +21,59 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {   
-    const tareasGuardadas = localStorage.getItem('tareas');
-    if (tareasGuardadas) {
-      this.tareas = JSON.parse(tareasGuardadas);
+    this.obtenerDatosParaError()
+    try {
+      const tareasGuardadas = localStorage.getItem('tareas');
+      if (tareasGuardadas) {
+        this.tareas = JSON.parse(tareasGuardadas);
+      }
+    } catch (error) {
+      // Enviar el error a Sentry
+      Sentry.captureException(error);
     }
+    
+  }
+
+  obtenerDatosParaError():void{
+    try {
+      localStorage.getItem('hola');      
+    } catch (error) {
+      // Enviar el error a Sentry
+      Sentry.captureException(error);
+    }
+
   }
 
 
-  agregarTarea() {
-    if (this.nuevaTarea.trim() !== '') {
-      this.tareas.push(this.nuevaTarea);
-      this.nuevaTarea = '';
-
-      // Guardar las tareas en el localStorage
-      localStorage.setItem('tareas', JSON.stringify(this.tareas));
+  agregarTarea() {  
+    try {
+      if (this.nuevaTarea.trim() !== '') {
+        this.tareas.push(this.nuevaTarea);
+        this.nuevaTarea = '';      
+        localStorage.setItem('tareas', JSON.stringify(this.tareas));      
+      }
+    } catch (error) {
+      // Enviar el error a Sentry
+      Sentry.captureException(error);
     }
+    
   }
 
 
-  eliminarTarea(tarea: string) {
-    const index = this.tareas.indexOf(tarea);
-    if (index !== -1) {
-      this.tareas.splice(index, 1);
-      localStorage.setItem('tareas', JSON.stringify(this.tareas));
+  eliminarTarea(tarea: string) {        
+
+    try {
+      const index = this.tareas.indexOf(tarea);
+      if (index !== -1) {
+        this.tareas.splice(index, 1);
+        localStorage.setItem('tareas', JSON.stringify(this.tareas));
+      }
+    } catch (error) {
+      // Enviar el error a Sentry
+      Sentry.captureException(error);
     }
   }
+  
   
 
 }
