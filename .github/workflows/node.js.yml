@@ -18,8 +18,8 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install and build
-        working-directory: ./angular-crash-2021
-        run: npm install && npm run gh-build && cp dist/angular-crash/index.html
+        working-directory: ./
+        run: npm install && npm run gh-build && cp dist/
       
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
