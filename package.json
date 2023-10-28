@@ -4,11 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && npm run sentry:sourcemaps",
-    "gh-build": "ng build --configuration production --base-href ./",
+    "build": "ng build && npm run sentry:sourcemaps",    
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org idd-education-edabd87c3 --project appwebgestion ./dist"
+    "sentry:sourcemaps": "sourcemaps inject --org idd-education-edabd87c3 --project appwebgestion ./dist"
   },
   "private": true,
   "dependencies": {
