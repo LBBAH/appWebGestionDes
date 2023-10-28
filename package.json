@@ -8,7 +8,7 @@
     "gh-build": "ng build --configuration production --base-href ./",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org idd-education-edabd87c3 --project appwebgestion ./dist && sentry-cli sourcemaps upload --org idd-education-edabd87c3 --project appwebgestion ./dist"
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org idd-education-edabd87c3 --project appwebgestion ./dist"
   },
   "private": true,
   "dependencies": {
